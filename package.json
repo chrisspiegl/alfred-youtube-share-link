@@ -1,6 +1,6 @@
 {
   "name": "alfred-youtube-share-link",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Alfred workflow to generate the YouTube short link from a url in your clipboard",
   "type": "module",
   "main": "index.js",
