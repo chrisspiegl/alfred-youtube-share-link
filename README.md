@@ -4,6 +4,8 @@
 
 <img src="media/screenshot.png" style="width: 100%;">
 
+Shorten the YouTube link in your clipboard and copy the version which starts with `https://youtu.be/` for convenience.
+
 ## Install
 
 ```
