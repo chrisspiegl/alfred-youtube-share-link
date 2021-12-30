@@ -8,7 +8,7 @@ Shorten the YouTube link in your clipboard and copy the version which starts wit
 
 ## Install
 
-```
+```bash
 npm install --global alfred-youtube-share-link
 ```
 
@@ -21,7 +21,7 @@ npm install --global alfred-youtube-share-link
 3. Or provide the url via `yts https://youtube.com/watch?v=askdf214s`
 4. Hit <kbd>Enter</kbd> to copy the created YouTube share link to your clipboard
 
-
 ## Related
 
-- [alfy](https://github.com/sindresorhus/alfy) - Create Alfred workflows with ease
+* [More Alfred Workflows](https://github.com/chrisspiegl/alfred-workflows) - My Alfred Workflow Directory
+* [alfy](https://github.com/sindresorhus/alfy) - Create Alfred workflows with ease

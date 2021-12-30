@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.chrisspiegl.alfred-youtube-share-link</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>2C993625-FD5B-46AE-888F-4AD852EBDEF4</key>
@@ -69,7 +71,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>yts</string>
+				<string>{var:keyword}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -79,7 +81,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string></string>
+				<string>Waiting…</string>
 				<key>script</key>
 				<string>./node_modules/.bin/run-node index.js "$1"</string>
 				<key>scriptargtype</key>
@@ -165,34 +167,39 @@ https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 		<key>2C993625-FD5B-46AE-888F-4AD852EBDEF4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<integer>240</integer>
 			<key>ypos</key>
-			<integer>80</integer>
+			<integer>40</integer>
 		</dict>
 		<key>6D5192E7-C58D-4E2B-94F6-689A805931E7</key>
 		<dict>
 			<key>xpos</key>
-			<integer>615</integer>
+			<integer>385</integer>
 			<key>ypos</key>
-			<integer>170</integer>
+			<integer>130</integer>
 		</dict>
 		<key>7DF3C436-69FC-4BDA-8846-BB14CBA3775F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>615</integer>
+			<integer>385</integer>
 			<key>ypos</key>
-			<integer>50</integer>
+			<integer>10</integer>
 		</dict>
 		<key>85904A07-9784-41EE-AA50-CC9BB75D75E7</key>
 		<dict>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>10</integer>
 			<key>ypos</key>
-			<integer>50</integer>
+			<integer>10</integer>
 		</dict>
 	</dict>
-	<key>variablesdontexport</key>
-	<array/>
+	<key>variables</key>
+	<dict>
+		<key>keyword</key>
+		<string>yts</string>
+	</dict>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
