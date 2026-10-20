@@ -48,7 +48,7 @@
 	<key>createdby</key>
 	<string>Chris Spiegl</string>
 	<key>description</key>
-	<string></string>
+	<string>Generate a youtu.be share link from a YouTube URL in Alfred or on the clipboard.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -159,7 +159,9 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Alfred workflow to generate the YouTube short link from a url in your clipboard
+	<string>Alfred workflow to generate a youtu.be share link from a YouTube URL.
+
+Accepts watch?v=, youtu.be, /shorts/, /embed/, /live/, and music.youtube.com. The keyword is yts. With no argument, the workflow reads the clipboard.
 
 https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 	<key>uidata</key>
@@ -199,8 +201,8 @@ https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 		<string>yts</string>
 	</dict>
 	<key>version</key>
-	<string></string>
+	<string>0.0.3</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 </dict>
 </plist>
