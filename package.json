@@ -10,7 +10,14 @@
     "url": "https://chrisspiegl.com/"
   },
   "license": "MIT",
-  "repository": "chrisspiegl/alfred-youtube-share-link",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisspiegl/alfred-youtube-share-link.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisspiegl/alfred-youtube-share-link/issues"
+  },
+  "homepage": "https://github.com/chrisspiegl/alfred-youtube-share-link#readme",
   "keywords": [
     "alfred",
     "workflow",
