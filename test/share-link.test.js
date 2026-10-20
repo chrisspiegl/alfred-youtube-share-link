@@ -74,4 +74,36 @@ describe('shareLinkItems', () => {
       subtitle: 'Please try again…',
     }])
   })
+
+  it('adds no playlist rows when the setting is empty', () => {
+    const plain = shareLinkItems(`https://youtu.be/${VIDEO_ID}`)
+    assert.deepEqual(shareLinkItems(`https://youtu.be/${VIDEO_ID}`, ''), plain)
+    assert.deepEqual(shareLinkItems(`https://youtu.be/${VIDEO_ID}`, ' \n\n '), plain)
+    assert.deepEqual(shareLinkItems(`https://youtu.be/${VIDEO_ID}`, undefined), plain)
+  })
+
+  it('adds one share link per configured playlist id', () => {
+    assert.deepEqual(shareLinkItems(`https://www.youtube.com/watch?v=${VIDEO_ID}`, 'PLalpha\n\nPLbeta\n'), [
+      {
+        title: `YT Share Link: https://youtu.be/${VIDEO_ID}`,
+        subtitle: 'Copy to Clipboard',
+        arg: `https://youtu.be/${VIDEO_ID}`,
+      },
+      {
+        title: `YT Share Link: youtu.be/${VIDEO_ID}`,
+        subtitle: 'Copy to Clipboard',
+        arg: `youtu.be/${VIDEO_ID}`,
+      },
+      {
+        title: `Link with Playlist: https://youtu.be/${VIDEO_ID}?list=PLalpha`,
+        subtitle: 'Copy to Clipboard',
+        arg: `https://youtu.be/${VIDEO_ID}?list=PLalpha`,
+      },
+      {
+        title: `Link with Playlist: https://youtu.be/${VIDEO_ID}?list=PLbeta`,
+        subtitle: 'Copy to Clipboard',
+        arg: `https://youtu.be/${VIDEO_ID}?list=PLbeta`,
+      },
+    ])
+  })
 })

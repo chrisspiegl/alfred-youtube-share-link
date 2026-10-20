@@ -4,6 +4,7 @@ const NO_MATCH_ITEM = {
 }
 
 const VIDEO_ID = /^[\w-]+$/
+const PLAYLIST_ID = /^[\w-]+$/
 
 const EMBEDDED_URL = /(?<![\w.-])(?:https?:\/\/)?(?:(?:[a-z0-9-]+\.)*youtube\.com|youtu\.be)\/\S+/gi
 
@@ -30,15 +31,28 @@ export function extractYoutubeVideoId(input) {
   return null
 }
 
-export function shareLinkItems(input) {
+export function parsePlaylistIds(playlistIdsText) {
+  if (typeof playlistIdsText !== 'string')
+    return []
+
+  const playlistIds = []
+  for (const line of playlistIdsText.split(/\r?\n/)) {
+    const playlistId = line.trim()
+    if (!PLAYLIST_ID.test(playlistId))
+      continue
+    playlistIds.push(playlistId)
+  }
+  return playlistIds
+}
+
+export function shareLinkItems(input, playlistIdsText = '') {
   const videoId = extractYoutubeVideoId(input)
   if (videoId == null)
     return [NO_MATCH_ITEM]
 
   const youtubeLink = `youtu.be/${videoId}`
   const youtubeLinkHttps = `https://${youtubeLink}`
-
-  return [
+  const items = [
     {
       title: `YT Share Link: ${youtubeLinkHttps}`,
       subtitle: 'Copy to Clipboard',
@@ -50,6 +64,17 @@ export function shareLinkItems(input) {
       arg: youtubeLink,
     },
   ]
+
+  for (const playlistId of parsePlaylistIds(playlistIdsText)) {
+    const playlistLink = `${youtubeLinkHttps}?list=${playlistId}`
+    items.push({
+      title: `Link with Playlist: ${playlistLink}`,
+      subtitle: 'Copy to Clipboard',
+      arg: playlistLink,
+    })
+  }
+
+  return items
 }
 
 function idFromCandidate(candidate) {
