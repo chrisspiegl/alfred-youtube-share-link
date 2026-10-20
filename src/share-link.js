@@ -31,18 +31,17 @@ export function extractYoutubeVideoId(input) {
   return null
 }
 
-export function parsePlaylistIds(playlistIdsText) {
+export function parsePlaylists(playlistIdsText) {
   if (typeof playlistIdsText !== 'string')
     return []
 
-  const playlistIds = []
+  const playlists = []
   for (const line of playlistIdsText.split(/\r?\n/)) {
-    const playlistId = line.trim()
-    if (!PLAYLIST_ID.test(playlistId))
-      continue
-    playlistIds.push(playlistId)
+    const playlist = parsePlaylistLine(line)
+    if (playlist)
+      playlists.push(playlist)
   }
-  return playlistIds
+  return playlists
 }
 
 export function shareLinkItems(input, playlistIdsText = '') {
@@ -65,16 +64,35 @@ export function shareLinkItems(input, playlistIdsText = '') {
     },
   ]
 
-  for (const playlistId of parsePlaylistIds(playlistIdsText)) {
-    const playlistLink = `${youtubeLinkHttps}?list=${playlistId}`
+  for (const playlist of parsePlaylists(playlistIdsText)) {
     items.push({
-      title: `Link with Playlist: ${playlistLink}`,
+      title: `Link with Playlist: ${playlist.name}`,
       subtitle: 'Copy to Clipboard',
-      arg: playlistLink,
+      arg: `${youtubeLinkHttps}?list=${playlist.id}`,
     })
   }
 
   return items
+}
+
+function parsePlaylistLine(line) {
+  const trimmed = line.trim()
+  if (trimmed.length === 0)
+    return null
+
+  const separator = trimmed.lastIndexOf('|')
+  if (separator === -1) {
+    if (!PLAYLIST_ID.test(trimmed))
+      return null
+    return { name: trimmed, id: trimmed }
+  }
+
+  const name = trimmed.slice(0, separator).trim()
+  const id = trimmed.slice(separator + 1).trim()
+  if (!PLAYLIST_ID.test(id))
+    return null
+
+  return { name: name.length > 0 ? name : id, id }
 }
 
 function idFromCandidate(candidate) {

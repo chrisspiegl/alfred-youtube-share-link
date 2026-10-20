@@ -2,7 +2,7 @@
 
 Alfred workflow that turns a YouTube URL into a `youtu.be` share link.
 
-It reads the keyword argument, or the clipboard when the argument is empty, and offers `https://youtu.be/<id>` and `youtu.be/<id>`. Press Enter to copy the selected result. If you add playlist IDs in the workflow configuration, it also offers one share link per playlist.
+It reads the keyword argument, or the clipboard when the argument is empty, and offers `https://youtu.be/<id>` and `youtu.be/<id>`. Press Enter to copy the selected result. If you add playlists in the workflow configuration, it also offers one named share link per playlist.
 
 Recognized URLs:
 
@@ -34,19 +34,25 @@ With no playlist IDs configured, the script filter shows two rows:
 
 ## Playlist IDs
 
-Open Alfred Preferences → Workflows, select this workflow, and click **Configure Workflow**. In **Playlist IDs**, enter one YouTube playlist ID per line. Leave the field empty if you do not want playlist rows.
+Open Alfred Preferences → Workflows, select this workflow, and click **Configure Workflow**. In **Playlist IDs** (`playlist_ids`), enter one playlist per line:
 
 ```
-PLalpha
+Name | PLAYLIST_ID
+```
+
+```
+Chris Uploads | PLalpha
 PLbeta
 ```
 
-Those IDs are read from the workflow configuration (`playlist_ids`). They are not stored in the workflow source. For each ID, the script filter adds a row after the plain share links:
+Leave the field empty if you do not want playlist rows. Blank lines are ignored. A line with only an ID is shown using that ID.
 
-- `Link with Playlist: https://youtu.be/<video id>?list=PLalpha`
-- `Link with Playlist: https://youtu.be/<video id>?list=PLbeta`
+The plain `https://youtu.be/…` and `youtu.be/…` rows stay, with no playlist. Each configured playlist adds a row after those:
 
-Blank lines are ignored. Text that is not a YouTube link still shows only the “not a valid youtube link” row.
+- `Link with Playlist: Chris Uploads` copies `https://youtu.be/<video id>?list=PLalpha`
+- `Link with Playlist: PLbeta` copies `https://youtu.be/<video id>?list=PLbeta`
+
+These values come from the workflow configuration, not from the source. Text that is not a YouTube link still shows only the “not a valid youtube link” row.
 
 ## Maintainer
 

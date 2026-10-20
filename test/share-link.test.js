@@ -82,8 +82,8 @@ describe('shareLinkItems', () => {
     assert.deepEqual(shareLinkItems(`https://youtu.be/${VIDEO_ID}`, undefined), plain)
   })
 
-  it('adds one share link per configured playlist id', () => {
-    assert.deepEqual(shareLinkItems(`https://www.youtube.com/watch?v=${VIDEO_ID}`, 'PLalpha\n\nPLbeta\n'), [
+  it('shows the written playlist name and falls back to the id', () => {
+    assert.deepEqual(shareLinkItems(`https://www.youtube.com/watch?v=${VIDEO_ID}`, 'Chris Uploads | PLalpha\n\nPLbeta\n | PLgamma\nnot a playlist\n'), [
       {
         title: `YT Share Link: https://youtu.be/${VIDEO_ID}`,
         subtitle: 'Copy to Clipboard',
@@ -95,14 +95,19 @@ describe('shareLinkItems', () => {
         arg: `youtu.be/${VIDEO_ID}`,
       },
       {
-        title: `Link with Playlist: https://youtu.be/${VIDEO_ID}?list=PLalpha`,
+        title: 'Link with Playlist: Chris Uploads',
         subtitle: 'Copy to Clipboard',
         arg: `https://youtu.be/${VIDEO_ID}?list=PLalpha`,
       },
       {
-        title: `Link with Playlist: https://youtu.be/${VIDEO_ID}?list=PLbeta`,
+        title: 'Link with Playlist: PLbeta',
         subtitle: 'Copy to Clipboard',
         arg: `https://youtu.be/${VIDEO_ID}?list=PLbeta`,
+      },
+      {
+        title: 'Link with Playlist: PLgamma',
+        subtitle: 'Copy to Clipboard',
+        arg: `https://youtu.be/${VIDEO_ID}?list=PLgamma`,
       },
     ])
   })
