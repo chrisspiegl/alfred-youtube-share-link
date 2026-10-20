@@ -171,30 +171,30 @@ https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 		<key>2C993625-FD5B-46AE-888F-4AD852EBDEF4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>240</integer>
+			<real>240</real>
 			<key>ypos</key>
-			<integer>40</integer>
+			<real>40</real>
 		</dict>
 		<key>6D5192E7-C58D-4E2B-94F6-689A805931E7</key>
 		<dict>
 			<key>xpos</key>
-			<integer>385</integer>
+			<real>385</real>
 			<key>ypos</key>
-			<integer>130</integer>
+			<real>130</real>
 		</dict>
 		<key>7DF3C436-69FC-4BDA-8846-BB14CBA3775F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>385</integer>
+			<real>385</real>
 			<key>ypos</key>
-			<integer>10</integer>
+			<real>15</real>
 		</dict>
 		<key>85904A07-9784-41EE-AA50-CC9BB75D75E7</key>
 		<dict>
 			<key>xpos</key>
-			<integer>10</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>10</integer>
+			<real>15</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
