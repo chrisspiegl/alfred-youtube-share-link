@@ -11,16 +11,28 @@ try {
 	const youtubeLinkParts = regex.exec(input.trim());
 	const youtubeLink = `youtu.be/${youtubeLinkParts[1]}`.trim();
 	const youtubeLinkHttps = `https://${youtubeLink}`;
+  	const playlistUploadsChris = `&list=UUrfYnHuKRC-Worm7OmMMcLQ`
+  	const playlistUploadsNicole = `&list=UU3kMsIhkQuPGObjIRoVjCZg`
 	alfy.output([
 		{
-			title: `YT Share Link: ${youtubeLinkHttps}`,
+			title: `Link with Playlist: ${youtubeLinkHttps}${playlistUploadsChris}`,
+			subtitle: 'Copy to Clipboard',
+			arg: youtubeLinkHttps + playlistUploadsChris,
+		},
+		{
+			title: `Share Link: ${youtubeLinkHttps}`,
 			subtitle: 'Copy to Clipboard',
 			arg: youtubeLinkHttps,
 		},
 		{
-			title: `YT Share Link: ${youtubeLink}`,
+			title: `Share Minimal Link: ${youtubeLink}`,
 			subtitle: 'Copy to Clipboard',
 			arg: youtubeLink,
+		},
+		{
+			title: `Link with Playlist Nicole Uploads: ${youtubeLinkHttps}${playlistUploadsNicole}`,
+			subtitle: 'Copy to Clipboard',
+			arg: youtubeLinkHttps + playlistUploadsNicole,
 		},
 	]);
 } catch {
