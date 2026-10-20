@@ -48,7 +48,7 @@
 	<key>createdby</key>
 	<string>Chris Spiegl</string>
 	<key>description</key>
-	<string></string>
+	<string>Generate a youtu.be share link from a YouTube URL in Alfred or on the clipboard.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -159,7 +159,11 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Alfred workflow to generate the YouTube short link from a url in your clipboard
+	<string>Alfred workflow to generate a youtu.be share link from a YouTube URL.
+
+Accepts watch?v=, youtu.be, /shorts/, /embed/, /live/, and music.youtube.com. The keyword is yts. With no argument, the workflow reads the clipboard.
+
+The script filter always offers the plain https and youtu.be share links. Configure Workflow, Playlist IDs, takes one playlist per line as Name | PLAYLIST_ID. A line with only an ID is shown as that ID. Leave the field empty for no playlist rows.
 
 https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 	<key>uidata</key>
@@ -193,14 +197,38 @@ https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 			<integer>10</integer>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<false/>
+				<key>verticalsize</key>
+				<integer>6</integer>
+			</dict>
+			<key>description</key>
+			<string>One playlist per line: Name | PLAYLIST_ID. A line with only an ID is shown as that ID. Leave this empty to show only the plain share links.</string>
+			<key>label</key>
+			<string>Playlist IDs</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>playlist_ids</string>
+		</dict>
+	</array>
 	<key>variables</key>
 	<dict>
 		<key>keyword</key>
 		<string>yts</string>
 	</dict>
 	<key>version</key>
-	<string></string>
+	<string>0.0.3</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/chrisspiegl/alfred-youtube-share-link</string>
 </dict>
 </plist>

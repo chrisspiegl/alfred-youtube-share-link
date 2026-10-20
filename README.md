@@ -1,27 +1,73 @@
 # alfred-youtube-share-link
 
-> [Alfred](https://alfredapp.com) workflow to generate the YouTube short link from a url in your clipboard
+Alfred workflow that turns a YouTube URL into a `youtu.be` share link.
 
-<img src="media/screenshot.png" style="width: 100%;">
+It reads the keyword argument, or the clipboard when the argument is empty, and offers `https://youtu.be/<id>` and `youtu.be/<id>`. Press Enter to copy the selected result. If you add playlists in the workflow configuration, it also offers one named share link per playlist.
 
-Shorten the YouTube link in your clipboard and copy the version which starts with `https://youtu.be/` for convenience.
+Recognized URLs:
+
+- `watch?v=`
+- `youtu.be`
+- `/shorts/`
+- `/embed/`
+- `/live/`
+- `music.youtube.com`
 
 ## Install
+
+Requires [Alfred 5](https://alfredapp.com) with the [Powerpack](https://alfredapp.com/powerpack/) and [Node.js](https://nodejs.org) 20+ (verified on 24).
 
 ```bash
 npm install --global alfred-youtube-share-link
 ```
 
-*Requires [Node.js](https://nodejs.org) 14+ and the Alfred [Powerpack](https://alfredapp.com/powerpack/).*
-
 ## Usage
 
-1. Open Alfred
-2. Either enter `yts` for clipboard shortening
-3. Or provide the url via `yts https://youtube.com/watch?v=askdf214s`
-4. Hit <kbd>Enter</kbd> to copy the created YouTube share link to your clipboard
+1. Open Alfred.
+2. Enter `yts` to read the clipboard, or `yts https://www.youtube.com/watch?v=askdf214s` to pass a URL.
+3. Press Enter to copy the share link.
+
+With no playlist IDs configured, the script filter shows two rows:
+
+- `YT Share Link: https://youtu.be/<video id>`
+- `YT Share Link: youtu.be/<video id>`
+
+## Playlist IDs
+
+Open Alfred Preferences → Workflows, select this workflow, and click **Configure Workflow**. In **Playlist IDs** (`playlist_ids`), enter one playlist per line:
+
+```
+Name | PLAYLIST_ID
+```
+
+```
+Chris Uploads | PLalpha
+PLbeta
+```
+
+Leave the field empty if you do not want playlist rows. Blank lines are ignored. A line with only an ID is shown using that ID.
+
+The plain `https://youtu.be/…` and `youtu.be/…` rows stay, with no playlist. Each configured playlist adds a row after those:
+
+- `Link with Playlist: Chris Uploads` copies `https://youtu.be/<video id>?list=PLalpha`
+- `Link with Playlist: PLbeta` copies `https://youtu.be/<video id>?list=PLbeta`
+
+These values come from the workflow configuration, not from the source. Text that is not a YouTube link still shows only the “not a valid youtube link” row.
+
+## Maintainer
+
+```bash
+pnpm install
+pnpm lint
+pnpm test
+pnpm release
+```
+
+## Release
+
+From a clean `main` checkout, `pnpm release` prompts for the version, publishes to npm with pnpm, and creates the GitHub release. Requires npm login and a GitHub token (`GITHUB_TOKEN`) or `gh` auth.
 
 ## Related
 
-* [More Alfred Workflows](https://github.com/chrisspiegl/alfred-workflows) - My Alfred Workflow Directory
-* [alfy](https://github.com/sindresorhus/alfy) - Create Alfred workflows with ease
+- [More Alfred Workflows](https://github.com/chrisspiegl/alfred-workflows) - My Alfred Workflow Directory
+- [alfy](https://github.com/sindresorhus/alfy) - Create Alfred workflows with ease
